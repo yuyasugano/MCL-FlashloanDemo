@@ -10,13 +10,11 @@ contract FlashLoanReceiverBase is IFlashLoanReceiver {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
-    ILendingPoolAddressesProvider public addressesProvider;
+    // See https://multiplierfinance.medium.com/multi-chain-lend-protocol-is-live-on-bsc-5003735e3c18 
+    // The official address should not change once deployed
+    ILendingPoolAddressesProvider public addressesProvider = ILendingPoolAddressesProvider(address(0xCc0479a98cC66E85806D0Cd7970d6e07f77Fd633));
     
     address public constant BNB_ADDRESS = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-
-    constructor(ILendingPoolAddressesProvider _provider) public {
-        addressesProvider = _provider;
-    }
 
     function() external payable {}
 
